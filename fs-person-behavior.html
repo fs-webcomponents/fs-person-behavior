@@ -1,0 +1,87 @@
+<link rel="import" href="../fs-behavior/fs-behavior.html">
+
+<script>
+  FSPersonBehaviorImpl = {
+    
+    properties: {
+
+      /**
+       * Person ID
+       *
+       * @type String
+       */
+      personId: {
+        type: String,
+        notify: true,
+        observer: '_idChanged',
+        reflectToAttribute: true
+      },
+      
+      /**
+       * Person
+       * 
+       * @type Object
+       */
+      person: {
+        type: Object,
+        notify: true,
+        observer: '_personChanged'
+      },
+      
+      requested: {
+        type: Boolean,
+        readOnly: true,
+        value: false,
+        observer: '_requestedChanged'
+      },
+      
+      loading: {
+        type: Boolean,
+        readOnly: true,
+        value: false,
+        observer: '_loadingChanged'
+      }
+
+    },
+    
+    attached: function() {
+      this.loadPerson();
+    },
+    
+    loadPerson: function(){
+      var self = this;
+      if(!this.requested && this.isAuthenticated() && this.personId){
+        this._setRequested(true);
+        this._setLoading(true);
+        this.getClient().getPerson(this.personId).then(function(response){
+          self.person = response.getPerson();
+          this._setLoading(false);
+        });
+      }
+    },
+    
+    _authenticatedChanged: function(event){
+      if(event.detail.value){
+        this.loadPerson();
+      }
+    },
+    
+    _idChanged: function(){
+      this.loadPerson();
+    },
+    
+    _personChanged: function(){
+      
+    },
+    
+    _requestedChanged: function(){
+      
+    },
+    
+    _loadingChanged: function(){
+      
+    }
+  };
+  
+  FSPersonBehavior = [ FSBehavior, FSPersonBehaviorImpl ];
+</script>
