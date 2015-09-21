@@ -27,13 +27,13 @@
         notify: true
       },
       
-      requested: {
+      personRequested: {
         type: Boolean,
         readOnly: true,
         value: false
       },
       
-      loading: {
+      personLoading: {
         type: Boolean,
         readOnly: true,
         value: false
@@ -47,12 +47,12 @@
     
     loadPerson: function(){
       var self = this;
-      if(!this.requested && this.isAuthenticated() && this.personId){
-        this._setRequested(true);
-        this._setLoading(true);
+      if(!this.personRequested && this.isAuthenticated() && this.personId){
+        this._setPersonRequested(true);
+        this._setPersonLoading(true);
         this.getClient().getPerson(this.personId).then(function(response){
           self.person = response.getPerson();
-          this._setLoading(false);
+          this._setPersonLoading(false);
         });
       }
     },
