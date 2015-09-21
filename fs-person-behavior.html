@@ -24,22 +24,19 @@
        */
       person: {
         type: Object,
-        notify: true,
-        observer: '_personChanged'
+        notify: true
       },
       
       requested: {
         type: Boolean,
         readOnly: true,
-        value: false,
-        observer: '_requestedChanged'
+        value: false
       },
       
       loading: {
         type: Boolean,
         readOnly: true,
-        value: false,
-        observer: '_loadingChanged'
+        value: false
       }
 
     },
@@ -68,19 +65,8 @@
     
     _idChanged: function(){
       this.loadPerson();
-    },
-    
-    _personChanged: function(){
-      
-    },
-    
-    _requestedChanged: function(){
-      
-    },
-    
-    _loadingChanged: function(){
-      
     }
+    
   };
   
   FSPersonBehavior = [ FSBehavior, FSPersonBehaviorImpl ];
