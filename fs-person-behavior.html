@@ -13,6 +13,7 @@
       personId: {
         type: String,
         notify: true,
+        value: null,
         observer: '_idChanged',
         reflectToAttribute: true
       },
@@ -25,6 +26,7 @@
       person: {
         type: Object,
         notify: true,
+        value: null,
         observer: '_personChanged'
       },
       
@@ -56,6 +58,14 @@
           this._setPersonLoading(false);
         });
       }
+    },
+    
+    /**
+     * Clear the personId and perosn and reset
+     * the element to its default state
+     */
+    reset: function() {
+      this.personId = null;
     },
     
     _authenticatedChanged: function(event){
