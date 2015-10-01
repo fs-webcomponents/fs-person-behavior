@@ -24,7 +24,8 @@
        */
       person: {
         type: Object,
-        notify: true
+        notify: true,
+        observer: '_personChanged'
       },
       
       personRequested: {
@@ -64,7 +65,17 @@
     },
     
     _idChanged: function(){
-      this.loadPerson();
+      if(this.personId){
+        this.loadPerson();
+      } else {
+        this.person = null;
+      }
+    },
+    
+    _personChanged: function(){
+      if(!this.person){
+        this.personId = null;
+      }
     }
     
   };
