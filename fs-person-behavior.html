@@ -79,6 +79,8 @@
         this.loadPerson();
       } else {
         this.person = null;
+        this._setPersonRequested(false);
+        this._setPersonLoading(false);
       }
     },
     
