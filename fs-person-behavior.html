@@ -59,7 +59,7 @@
         this._setPersonLoading(true);
         this.getClient().getPerson(this.personId).then(function(response){
           self.person = response.getPerson();
-          this._setPersonLoading(false);
+          self._setPersonLoading(false);
         });
       }
     },
