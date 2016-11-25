@@ -57,8 +57,10 @@
       if(!this.personRequested && this.isAuthenticated() && this.personId){
         this._setPersonRequested(true);
         this._setPersonLoading(true);
-        this.getClient().getPerson(this.personId).then(function(response){
-          self.person = response.getPerson();
+        this.getClient().get('/platform/tree/persons/' + this.personId, function(response){
+          if(response.data && response.data.persons){
+            self.person = response.data.persons[0];
+          }
           self._setPersonLoading(false);
         });
       }
