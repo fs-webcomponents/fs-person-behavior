@@ -57,11 +57,14 @@
       if(!this.personRequested && this.isAuthenticated() && this.personId){
         this._setPersonRequested(true);
         this._setPersonLoading(true);
-        this.getClient().get('/platform/tree/persons/' + this.personId, function(response){
-          if(response.data && response.data.persons){
+        this.getClient().get('/platform/tree/persons/' + this.personId, function(error, response){
+          self._setPersonLoading(false);
+          if(error){
+            console.error(error);
+          }
+          else if(response && response.data && response.data.persons){
             self.person = response.data.persons[0];
           }
-          self._setPersonLoading(false);
         });
       }
     },
@@ -91,7 +94,7 @@
     _idChanged: function(){
 
       // New id that does match current person; don't need to change anything
-      if(this.personId && this.person && this.personId === this.person.getId()){
+      if(this.personId && this.person && this.personId === this.person.id){
         // do nothing
       }
       
@@ -102,7 +105,7 @@
         this.person = null;
         
         // Load the new person if we need to
-        if(!this.person || this.person.getId() !== this.personId){
+        if(!this.person || this.person.id !== this.personId){
           this.loadPerson();
         }
       }
@@ -110,7 +113,7 @@
     
     _personChanged: function(){
       if(this.person){
-        this.personId = this.person.getId();
+        this.personId = this.person.id;
       }
     }
     
