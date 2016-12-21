@@ -1,5 +1,5 @@
 # fs-person-behavior
 
-An __experimental__ Polymer behavior for handling a FamilySearch person. Read
-the [docs](http://fs-webcomponents.github.io/fs-person-behavior/components/fs-person-behavior/)
-for usage instructions.
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://beta.webcomponents.org/element/fs-webcomponents/fs-person-behavior)
+
+A Polymer behavior for handling a FamilySearch person.
