@@ -3,6 +3,7 @@
   "description": "Shared fs-person components behavior.",
   "homepage": "https://github.com/york-solutions/fs-person-behavior",
   "main": "fs-person-behavior.html",
+  "version": "3.0.0",
   "authors": [
     "Justin York"
   ],
