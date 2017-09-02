@@ -17,10 +17,10 @@
     "familysearch"
   ],
   "dependencies": {
-    "fs-behavior": "fs-webcomponents/fs-behavior#polymer-2",
+    "fs-behavior": "fs-webcomponents/fs-behavior#^3.0.0",
     "polymer": "Polymer/polymer#^2.0.0"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#2.0-preview"
+    "iron-component-page": "PolymerElements/iron-component-page#^3.0.0"
   }
 }
